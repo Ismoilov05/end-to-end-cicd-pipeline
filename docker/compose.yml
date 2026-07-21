@@ -1,0 +1,13 @@
+services:
+  app:
+   build:
+    context: .
+    container_name: fastapi-app
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+  jenkins:
+    build:
+    context: .
+    dockerfile: docker/jenkins/Dockerfile
+  postgres:
