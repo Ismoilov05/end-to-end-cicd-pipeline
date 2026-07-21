@@ -1,25 +1,21 @@
 pipeline {
+
     agent any
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                echo 'Repository ready'
+                checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                sh 'echo Building application...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'echo Running tests...'
+                sh 'docker build -t fastapi-ci .'
             }
         }
 
     }
+
 }
